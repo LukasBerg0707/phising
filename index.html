@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sikkerhetstrening – Phishing-simulering</title>
+  <meta name="description" content="Trygg phishing-simulering for opplæring i nettsikkerhet." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Sikkerhetstrening</span>
+    </div>
+    <nav class="nav">
+      <a href="#lær">Lær</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#ressurser">Ressurser</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Phishing-simulering (trygg)</h1>
+      <p class="lead">
+        Denne siden er laget for å lære hvordan phishing fungerer – uten å skremme eller skade.
+        Du bestemmer selv om du vil starte simuleringen.
+      </p>
+
+      <div class="card warning">
+        <h2>⚠️ Viktig</h2>
+        <p>
+          Dette er <strong>en opplæringsside</strong>. Vi åpner <strong>ikke</strong> masse faner automatisk.
+          Du må selv trykke “Start simulering”.
+        </p>
+      </div>
+
+      <div class="cta-row">
+        <button id="startBtn" class="btn primary">Start simulering</button>
+        <button id="skipBtn" class="btn ghost">Gå rett til læringsdel</button>
+      </div>
+
+      <p class="small">
+        Tips: Bruk denne i kursrom/Teams, og be deltakerne forklare hva som gjorde lenken mistenkelig.
+      </p>
+    </section>
+
+    <!-- SIMULERING -->
+    <section id="sim" class="card sim hidden" aria-live="polite">
+      <div class="sim-header">
+        <h2>Simulering</h2>
+        <span class="pill">Kontrollert demo</span>
+      </div>
+
+      <div class="banner">
+        <h3 class="big">Dette var en phishing-simulering</h3>
+        <p>
+          Målet er å trene på <strong>stopp – tenk – sjekk</strong>.
+          Ingen data er samlet inn, og ingenting installeres.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <div class="panel">
+          <h3>Hva skulle du se etter?</h3>
+          <ul>
+            <li>Uvanlig/pressende språk (“haster”, “konto stenges”)</li>
+            <li>Lenker som ser nesten riktige ut (typosquatting)</li>
+            <li>Uventet vedlegg eller innlogging</li>
+            <li>Avsender som ikke matcher domenet</li>
+            <li>Forespørsel om MFA-koder/passord</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Trygg demonstrasjon (valgfri)</h3>
+          <p>
+            Vil du demonstrere hvordan phishing prøver å distrahere deg?
+            Dette åpner <strong>maks 2 ekstra faner</strong> – kun etter samtykke.
+          </p>
+
+          <label class="check">
+            <input type="checkbox" id="consentTabs" />
+            Jeg samtykker til å åpne opptil 2 faner for demo
+          </label>
+
+          <div class="cta-row">
+            <button id="openTabsBtn" class="btn danger" disabled>Åpne 2 demo-faner</button>
+            <button id="showUrlBtn" class="btn">Vis “mistenkelig” URL</button>
+          </div>
+
+          <div id="urlBox" class="codebox hidden" role="region" aria-label="URL demo">
+            <code>https://micros0ft-support-secure.example/login</code>
+            <p class="small">
+              Legg merke til <strong>0</strong> i stedet for <strong>o</strong> (typosquatting).
+              Dette er et eksempel, ikke en ekte innloggingsside.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÆRINGSDEL -->
+    <section id="lær" class="card">
+      <h2>Stop – Tenk – Sjekk (huskeliste)</h2>
+      <div class="grid three">
+        <div class="panel">
+          <h3>Stop</h3>
+          <p>Ikke klikk i hast. Pust og les nøye.</p>
+        </div>
+        <div class="panel">
+          <h3>Tenk</h3>
+          <p>Er dette forventet? Passer det med situasjonen?</p>
+        </div>
+        <div class="panel">
+          <h3>Sjekk</h3>
+          <p>Hold over lenken, sjekk domene, avsender, og rapporter ved tvil.</p>
+        </div>
+      </div>
+      <div class="note">
+        <strong>Gyllen regel:</strong> Ingen seriøse IT-avdelinger ber deg oppgi passord eller MFA-koder på e-post/DM.
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="card">
+      <h2>Mini-quiz (2 min)</h2>
+      <form id="quizForm" class="quiz">
+        <fieldset>
+          <legend>1) Du får en e-post som haster og ber deg logge inn via en lenke. Hva gjør du først?</legend>
+          <label><input type="radio" name="q1" value="a"> Klikker raskt for å unngå at kontoen sperres</label>
+          <label><input type="radio" name="q1" value="b"> Sjekker avsender, domenet og går heller til tjenesten via kjent adresse</label>
+          <label><input type="radio" name="q1" value="c"> Sender passordet til avsender for å bekrefte</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2) Hva er et rødt flagg?</legend>
+          <label><input type="radio" name="q2" value="a"> Avsenderdomene matcher bedriften</label>
+          <label><input type="radio" name="q2" value="b"> URL har små skrivefeil (f.eks. “micros0ft”)</label>
+          <label><input type="radio" name="q2" value="c"> Du forventet e-posten</label>
+        </fieldset>
+
+        <div class="cta-row">
+          <button class="btn primary" type="submit">Se resultat</button>
+          <button class="btn ghost" type="button" id="resetQuiz">Nullstill</button>
+        </div>
+
+        <div id="quizResult" class="result hidden" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- RESSURSER -->
+    <section id="ressurser" class="card">
+      <h2>Ressurser</h2>
+      <ul class="links">
+        <li><a href="https://www.nsm.no/" target="_blank" rel="noopener">NSM – Nasjonal sikkerhetsmyndighet</a></li>
+        <li><a href="https://www.norcert.no/" target="_blank" rel="noopener">NorCERT – varsler og råd</a></li>
+        <li><a href="https://www.datatilsynet.no/" target="_blank" rel="noopener">Datatilsynet – personvern og sikkerhet</a></li>
+      </ul>
+      <p class="small">
+        Tips: Legg inn bedriftens interne rutine for rapportering (f.eks. “Rapporter phish”-knapp).
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Sikkerhetstrening • Laget for opplæring</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
